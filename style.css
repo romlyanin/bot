@@ -1,0 +1,37 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.product {
+	flex: 0 0 45%;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.product img {
+	width: 50px;
+	height: 50px;
+}
+
+.product-title {
+	font-family: 'Telegram', sans-serif;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.buy-button {
+	background-color: #0088cc;
+	color: #fff;
+	font-family: 'Telegram', sans-serif;
+	font-size: 14px;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.buy-button:hover {
+	background-color: #005580;
+}

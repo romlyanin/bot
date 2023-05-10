@@ -1,8 +1,7 @@
-
 <?php
 // Получение параметров сообщения и ID чата из POST-запроса
 $message = $_POST['message'];
-$chatID = $_POST['330685'];
+$chatID = $_POST['chat_id'];
 
 // Замените 'YOUR_BOT_TOKEN' на свой токен бота Telegram
 $botToken = '6020094789:AAEraLAOChuB8Y5qp8uNk1Q4GsITY8N7TYE';
@@ -30,5 +29,3 @@ if ($result === false) {
     echo "Сообщение успешно отправлено в Telegram!";
 }
 ?>
-
-

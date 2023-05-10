@@ -1,12 +1,11 @@
 
 <?php
-// Получение параметра сообщения
+// Получение параметров сообщения и ID чата из POST-запроса
 $message = $_POST['message'];
+$chatID = $_POST['330685'];
 
 // Замените 'YOUR_BOT_TOKEN' на свой токен бота Telegram
 $botToken = '6020094789:AAEraLAOChuB8Y5qp8uNk1Q4GsITY8N7TYE';
-// Замените 'TARGET_USER_ID' на фактический идентификатор пользователя
-$chatID = '330685';
 
 // Формирование URL для отправки запроса
 $url = "https://api.telegram.org/bot" . $botToken . "/sendMessage";
@@ -31,4 +30,5 @@ if ($result === false) {
     echo "Сообщение успешно отправлено в Telegram!";
 }
 ?>
+
 

@@ -1,7 +1,7 @@
 <?php
 
-$botToken = 'YOUR_BOT_TOKEN';
-$chatID = 'TARGET_CHAT_ID';
+$botToken = '6020094789:AAEraLAOChuB8Y5qp8uNk1Q4GsITY8N7TYE';
+$chatID = '@testen18bot';
 $message = $_POST['message'];
 
 $apiUrl = "https://api.telegram.org/bot{$botToken}/sendMessage";

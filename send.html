@@ -2,13 +2,39 @@
 <html>
 <head>
     <title>Отправка сообщения в Telegram</title>
+    <script>
+        function sendMessage() {
+            var botToken = '6020094789:AAEraLAOChuB8Y5qp8uNk1Q4GsITY8N7TYE';
+            var chatID = '@testen18bot';
+            var message = document.getElementById('message').value;
+
+            var apiUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";
+            var data = new URLSearchParams();
+            data.append('chat_id', chatID);
+            data.append('text', message);
+
+            fetch(apiUrl, {
+                method: 'POST',
+                body: data
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    alert('Сообщение успешно отправлено в Telegram!');
+                    document.getElementById('message').value = '';
+                } else {
+                    throw new Error('Ошибка при выполнении запроса: ' + response.status);
+                }
+            })
+            .catch(function(error) {
+                alert('Произошла ошибка: ' + error.message);
+            });
+        }
+    </script>
 </head>
 <body>
     <h1>Отправка сообщения в Telegram</h1>
-    <form method="POST" action="send_message.php">
-        <label for="message">Сообщение:</label><br>
-        <input type="text" id="message" name="message" required><br><br>
-        <input type="submit" value="Отправить">
-    </form>
+    <label for="message">Сообщение:</label><br>
+    <input type="text" id="message" required><br><br>
+    <button type="button" onclick="sendMessage()">Отправить</button>
 </body>
 </html>

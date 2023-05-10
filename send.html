@@ -2,13 +2,29 @@
 <html>
 <head>
     <title>Отправка сообщения в Telegram</title>
+    <script>
+        function sendMessage() {
+            var message = document.getElementById('message').value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "send_message.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert('Сообщение успешно отправлено в Telegram!');
+                    document.getElementById('message').value = '';
+                } else {
+                    alert('Ошибка при выполнении запроса: ' + xhr.status);
+                }
+            };
+            xhr.send("message=" + encodeURIComponent(message));
+        }
+    </script>
 </head>
 <body>
     <h1>Отправка сообщения в Telegram</h1>
-    <form method="POST" action="send_message.php">
-        <label for="message">Сообщение:</label><br>
-        <input type="text" id="message" name="message" required><br><br>
-        <input type="submit" value="Отправить">
-    </form>
+    <label for="message">Сообщение:</label><br>
+    <input type="text" id="message" required><br><br>
+    <button type="button" onclick="sendMessage()">Отправить</button>
 </body>
 </html>

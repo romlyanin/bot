@@ -10,14 +10,13 @@
             var message = document.getElementById('message').value;
 
             var apiUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";
-            var data = {
-                chat_id: chatID,
-                text: message
-            };
+
+            var formData = new FormData();
+            formData.append('chat_id', chatID);
+            formData.append('text', message);
 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", apiUrl, true);
-            xhr.setRequestHeader("Content-Type", "application/json");
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
@@ -30,13 +29,13 @@
                 }
             };
 
-            xhr.send(JSON.stringify(data));
+            xhr.send(formData);
         }
     </script>
 </head>
 <body>
     <h1>Отправка сообщения в Telegram</h1>
-    <label for="message">Сообщенице:</label><br>
+    <label for="message">Сообщение:</label><br>
     <input type="text" id="message" required><br><br>
     <button type="button" onclick="sendMessage()">Отправить</button>
 </body>

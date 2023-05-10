@@ -14,6 +14,11 @@
         <input type="submit" value="Отправить">
     </form>
 
+    </hr>
+    
+    <h1>Отправка сообщения в Telegram</h1>
+    <button id="buyButton">Купить</button>
+    
     <script>
         $(document).ready(function() {
             $('#telegramForm').submit(function(e) {
@@ -39,5 +44,38 @@
             });
         });
     </script>
+   
+   <script>
+    $(document).ready(function() {
+        $('#buyButton').click(function() {
+            var message = 'Вы купили?';
+            var chatID = '330685'; // Замените на нужный вам chat_id
+            var botToken = 'YOUR_BOT_TOKEN'; // Замените на ваш токен бота
+
+            var url = 'https://api.telegram.org/bot' + botToken + '/sendMessage';
+            var data = {
+                chat_id: chatID,
+                text: message,
+                reply_markup: JSON.stringify({
+                    inline_keyboard: [
+                        [
+                            { text: 'Подтвердить', callback_data: 'confirm' },
+                            { text: 'Отменить', callback_data: 'cancel' }
+                        ]
+                    ]
+                })
+            };
+
+            $.post(url, data)
+                .done(function(response) {
+                    console.log('Сообщение успешно отправлено в Telegram!');
+                })
+                .fail(function(error) {
+                    console.log('Ошибка при отправке сообщения в Telegram.');
+                });
+        });
+    });
+    </script>
+    
 </body>
 </html>

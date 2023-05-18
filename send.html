@@ -8,7 +8,7 @@
 <body>
     <h1>Отправка сообщения в Telegram</h1>
     <form id="telegramForm">
-        <label for="message">Введите сообщенице:</label><br>
+        <label for="message">Введите сообщение:</label><br>
         <textarea name="message" id="message" required></textarea><br>
         <input type="hidden" name="chat_id" id="chat_id" value="-1001976851805"><!-- 330685 -->
         <input type="submit" value="Отправить">
@@ -49,7 +49,7 @@
     $(document).ready(function() {
         $('#buyButton').click(function() {
             var message = 'Вы купили?';
-            var chatID = '330685'; // Замените на нужный вам chat_id
+            var chatID = '-1001976851805'; // Замените на нужный вам chat_id
             var botToken = '6020094789:AAEraLAOChuB8Y5qp8uNk1Q4GsITY8N7TYE'; // Замените на ваш токен бота
 
             var url = 'https://api.telegram.org/bot' + botToken + '/sendMessage';
